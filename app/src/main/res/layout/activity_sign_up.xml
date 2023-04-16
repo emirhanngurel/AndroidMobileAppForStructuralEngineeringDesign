@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".SignUp"
+    android:background="@drawable/i308ljad82204626">
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Sign Up"
+        android:textAlignment="center"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/please"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Please create a user account to be able to use the application."
+        android:textAlignment="center"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/signupemail"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:fontFamily="sans-serif-medium"
+        android:inputType="textEmailAddress"
+        android:hint="E-Mail Address" />
+
+    <EditText
+        android:id="@+id/signuppwd"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:fontFamily="sans-serif-medium"
+        android:inputType="textPassword"
+        android:hint="Password" />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:onClick="signup"
+        android:text="SIGN UP" />
+
+
+
+</LinearLayout>
