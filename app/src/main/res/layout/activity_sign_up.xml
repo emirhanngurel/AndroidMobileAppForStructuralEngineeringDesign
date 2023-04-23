@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/ekran_resmi_2023_04_23_21_01_27"
     android:gravity="center"
-    tools:context=".SignUp"
-    android:background="@drawable/i308ljad82204626">
+    android:orientation="vertical"
+    tools:context=".SignUp">
 
     <TextView
         android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:text="Sign Up"
+        android:text="SIGN UP"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="34sp" />
 
     <TextView
@@ -28,6 +29,30 @@
         android:textSize="16sp" />
 
     <EditText
+        android:id="@+id/signuppwd2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:fontFamily="sans-serif-medium"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black" />
+
+    <EditText
+        android:id="@+id/signuppwd3"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:fontFamily="sans-serif-medium"
+        android:hint="Surname"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black" />
+
+    <EditText
         android:id="@+id/signupemail"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -35,8 +60,9 @@
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
         android:fontFamily="sans-serif-medium"
+        android:hint="E-Mail "
         android:inputType="textEmailAddress"
-        android:hint="E-Mail Address" />
+        android:textColorHint="@color/black" />
 
     <EditText
         android:id="@+id/signuppwd"
@@ -46,19 +72,24 @@
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
         android:fontFamily="sans-serif-medium"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:textColorHint="@color/black" />
 
     <Button
         android:id="@+id/signup"
+        style="@style/Widget.Material3.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
+        android:backgroundTint="@color/design_default_color_secondary"
         android:onClick="signup"
-        android:text="SIGN UP" />
-
+        android:text="SIGN UP"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

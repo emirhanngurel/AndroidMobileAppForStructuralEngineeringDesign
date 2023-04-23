@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignUp extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private EditText email, password;
+    private EditText email, password,name,surname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,10 @@ public class SignUp extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.signupemail);
         password = findViewById(R.id.signuppwd);
+        name = findViewById(R.id.signuppwd2);
+        surname=findViewById(R.id.signuppwd3);
+
+
 
 
     }
@@ -34,6 +38,7 @@ public class SignUp extends AppCompatActivity {
     public void signup(View v) {
         String signUpEmail = email.getText().toString().trim();
         String signUpPass = password.getText().toString().trim();
+
 
         if(signUpEmail.isEmpty()){
             email.setError("E-Mail field cannot be empty!");
