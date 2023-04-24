@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1030835856076",
+    "project_id": "stair-reinforcement",
+    "storage_bucket": "stair-reinforcement.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030835856076:android:b32fc694b2c51f0cbc5869",
+        "android_client_info": {
+          "package_name": "com.gema.stairreinforcement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030835856076-l7e370gicttmsaqnj3svlabv5k6ciair.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwuM5rX_J9dkFvnkQroX26pTxJbgOcLPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030835856076-l7e370gicttmsaqnj3svlabv5k6ciair.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

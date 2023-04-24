@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ekran_resmi_2023_04_23_21_01_27"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".SignUp">
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="SIGN UP"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/please"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Please create a user account to be able to use the application."
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/signuppwd2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:fontFamily="@font/poppins_semibold"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/signuppwd3"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:fontFamily="@font/poppins_semibold"
+        android:hint="Surname"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/signupemail"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:fontFamily="@font/poppins_semibold"
+        android:hint="E-Mail "
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/signuppwd"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:fontFamily="@font/poppins_semibold"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:id="@+id/signup"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="4pt"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:onClick="signup"
+        android:text="SIGN UP"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
