@@ -28,6 +28,7 @@ public class SignOn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_on);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
