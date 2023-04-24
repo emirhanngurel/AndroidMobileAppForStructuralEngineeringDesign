@@ -13,19 +13,20 @@
         android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/poppins_semibold"
         android:text="SIGN UP"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="34sp" />
 
     <TextView
         android:id="@+id/please"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Please create a user account to be able to use the application."
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <EditText
@@ -35,10 +36,10 @@
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/poppins_semibold"
         android:hint="Name"
         android:inputType="textPersonName"
-        android:textColorHint="@color/black" />
+        android:textColorHint="@color/white" />
 
     <EditText
         android:id="@+id/signuppwd3"
@@ -47,10 +48,10 @@
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/poppins_semibold"
         android:hint="Surname"
         android:inputType="textPersonName"
-        android:textColorHint="@color/black" />
+        android:textColorHint="@color/white" />
 
     <EditText
         android:id="@+id/signupemail"
@@ -59,10 +60,10 @@
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/poppins_semibold"
         android:hint="E-Mail "
         android:inputType="textEmailAddress"
-        android:textColorHint="@color/black" />
+        android:textColorHint="@color/white" />
 
     <EditText
         android:id="@+id/signuppwd"
@@ -71,10 +72,10 @@
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/poppins_semibold"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColorHint="@color/black" />
+        android:textColorHint="@color/white" />
 
     <Button
         android:id="@+id/signup"
@@ -89,6 +90,7 @@
         android:text="SIGN UP"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 

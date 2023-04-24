@@ -5,20 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animationCache="false"
-    android:background="@drawable/ekran_resmi_2023_04_23_21_01_27"
+    android:background="@drawable/ekran_resmi_2023_04_2321_01_27"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".SignOn">
 
     <TextView
-        android:id="@+id/welcome"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/poppins_semibold"
         android:text="LOGIN"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="34sp" />
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/reminding"
@@ -27,6 +28,7 @@
         android:fontFamily="sans-serif-medium"
         android:text="Please login to continue."
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <EditText
@@ -38,7 +40,7 @@
         android:layout_marginRight="4pt"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textColorHint="@color/black" />
 
     <EditText
@@ -64,7 +66,7 @@
         android:onClick="login"
         android:text="LOGIN"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:toggleCheckedStateOnClick="false" />
 
