@@ -53,7 +53,7 @@ public class SignOn extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(SignOn.this,"Login Failed!" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignOn.this,"Login Failed! " + e.getMessage(),Toast.LENGTH_SHORT).show();
 
                 }
             });
