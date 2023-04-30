@@ -9,11 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.gema.stairreinforcement.databinding.ActivityMainPageBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 
-public class MainPage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
 
     private FirebaseUser user;
     private FirebaseAuth mAuth;
@@ -23,11 +23,13 @@ public class MainPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainPageBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
         replaceFragment(new HomeFragment());
 
+        binding.bottomNavigationView.getMenu().getItem(1).setChecked(true);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             switch(item.getItemId()){
