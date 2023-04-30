@@ -1,6 +1,9 @@
 package com.gema.stairreinforcement;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
@@ -23,20 +26,33 @@ public class MainPage extends AppCompatActivity {
         binding = ActivityMainPageBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        replaceFragment(new HomeFragment());
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
-        if(user != null){
-            for(UserInfo profile: user.getProviderData()){
-                email = profile.getEmail();
-
+            switch(item.getItemId()){
+                case R.id.home:
+                    replaceFragment(new HomeFragment());
+                    break;
+                case R.id.profile:
+                    replaceFragment(new ProfileFragment());
+                    break;
+                case R.id.reports:
+                    replaceFragment(new ReportsFragment());
+                    break;
             }
-        }
-        System.out.println(email);
-        binding.textView.setText(email);
-        binding.imageView.setImageResource(R.drawable.img);
 
+            return true;
+        });
 
 
     }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.constraintLayout2,fragment);
+        fragmentTransaction.commit();
+    }
+
 }

@@ -30,8 +30,6 @@ public class SignUp extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.signupemail);
         password = findViewById(R.id.signuppwd);
-        name = findViewById(R.id.signuppwd2);
-        surname=findViewById(R.id.signuppwd3);
 
 
     }
@@ -52,18 +50,6 @@ public class SignUp extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                .setDisplayName(name.toString().trim() + surname.toString().trim())
-                                .build();
-                        user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()){
-                                    System.out.println("User profile updated.");
-                                }
-                            }
-                        });
                         Toast.makeText(SignUp.this,"Registration completed.",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(SignUp.this,SignOn.class));
                         finish();
