@@ -71,7 +71,7 @@
         android:onClick="signup"
         android:text="SIGN UP"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold" />
 
