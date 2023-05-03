@@ -71,9 +71,10 @@
         android:backgroundTint="@color/design_default_color_secondary"
         android:fontFamily="@font/questrial"
         android:onClick="login"
-        android:text="LOGIN"
+        android:text="Login"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@color/black"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:toggleCheckedStateOnClick="false" />
 
@@ -88,9 +89,10 @@
         android:backgroundTint="@color/design_default_color_secondary"
         android:fontFamily="@font/questrial"
         android:onClick="signup"
-        android:text="SIGN UP"
+        android:text="Sign Up"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@color/black"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView

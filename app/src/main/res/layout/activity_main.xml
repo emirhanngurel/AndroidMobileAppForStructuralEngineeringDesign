@@ -5,19 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ekran_resmi_2023_04_23_20_56_04"
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="259dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="61dp"
-        android:backgroundTint="@color/design_default_color_secondary"
-        android:onClick="startTest"
-        android:text="Start"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".MainActivity"/>
