@@ -57,11 +57,7 @@ public class HomeFragment extends Fragment {
                 meter = cal * 0.000000001; //m3
             }
             else{
-                int i = (numOfSteps - 1) + rise * runOfStep * widthOfStair;
-                double cal0 = (rise * runOfStep * widthOfStair)/2;
-                double cal1 = Math.sqrt(rise*rise + runOfStep*runOfStep)*widthOfStair*thickness;
-                double cal2 = (numOfSteps-1)+rise*runOfStep*widthOfStair;
-                double total = cal0 + cal1 * cal2;
+                double total = ((rise*runOfStep*widthOfStair)/2 + Math.sqrt(rise*rise + runOfStep*runOfStep) * widthOfStair * thickness)*(numOfSteps-1)+rise*runOfStep*widthOfStair;
                 feet = total * 0.0000000353146667214886; // ft3;
                 yard = total * 0.00000000130795061931439; //yd3
                 meter = total * 0.000000001; //m3
