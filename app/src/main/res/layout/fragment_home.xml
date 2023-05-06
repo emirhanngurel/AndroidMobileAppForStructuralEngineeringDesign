@@ -10,254 +10,238 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="409dp"
-        android:layout_height="97dp"
-        app:srcCompat="@drawable/ekran_resmi_2023_04_24_17_28_25"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-8dp"
-        tools:layout_editor_absoluteY="3dp" />
-
-    <TextView
-        android:id="@+id/textView26"
         android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="7dp"
-        android:background="#00BCD4"
-        android:elegantTextHeight="true"
-        android:fontFamily="@font/questrial"
-        android:text="Nosing                                                                 cm   "
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="69dp"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
-        android:background="@color/white"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/textView26"
-        app:layout_constraintEnd_toEndOf="@+id/textView26"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="@+id/textView26"
-        app:layout_constraintTop_toTopOf="@+id/textView26"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/rise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ekran_resmi_2023_04_24_17_28_25"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="33dp"
         android:background="#00BCD4"
         android:elegantTextHeight="true"
         android:fontFamily="@font/questrial"
-        android:text="Tread thickness                                               cm"
+        android:text="Throat thickness                                             mm"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/calculate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+        app:layout_constraintTop_toTopOf="@+id/width" />
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="69dp"
+    <EditText
+        android:id="@+id/thickness"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="36dp"
         android:background="@color/white"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/textView25"
-        app:layout_constraintEnd_toEndOf="@+id/textView25"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="@+id/textView25"
-        app:layout_constraintTop_toTopOf="@+id/textView25"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/calculate"
+        app:layout_constraintEnd_toEndOf="@+id/calculate"
+        app:layout_constraintStart_toStartOf="@+id/calculate"
+        app:layout_constraintTop_toBottomOf="@+id/width" />
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="39dp"
         android:background="#00BCD4"
         android:elegantTextHeight="true"
         android:fontFamily="@font/questrial"
-        android:text="Width of stairs                                                  cm            "
+        android:text="Width of stairs                                                  mm            "
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toTopOf="@+id/textView23" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="69dp"
+    <EditText
+        android:id="@+id/width"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/textView24"
-        app:layout_constraintEnd_toEndOf="@+id/textView24"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="@+id/textView24"
-        app:layout_constraintTop_toTopOf="@+id/textView24"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toTopOf="@+id/thickness"
+        app:layout_constraintEnd_toEndOf="@+id/thickness"
+        app:layout_constraintStart_toStartOf="@+id/thickness"
+        app:layout_constraintTop_toBottomOf="@+id/numOfSteps" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="7dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="5dp"
         android:background="#00BCD4"
         android:elegantTextHeight="true"
         android:fontFamily="@font/questrial"
-        android:text="Number of steps                                               ps"
+        android:text="Number of steps                                             ps"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/width"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="69dp"
+    <EditText
+        android:id="@+id/numOfSteps"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/white"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/textView23"
-        app:layout_constraintEnd_toEndOf="@+id/textView23"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="@+id/textView23"
-        app:layout_constraintTop_toTopOf="@+id/textView23"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/width"
+        app:layout_constraintEnd_toEndOf="@+id/width"
+        app:layout_constraintStart_toStartOf="@+id/width"
+        app:layout_constraintTop_toBottomOf="@+id/run" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="7dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="45dp"
         android:background="#00BCD4"
         android:elegantTextHeight="true"
         android:fontFamily="@font/questrial"
-        android:text="Shaft diameter                                                 cm            "
+        android:text="Run of the step                                                mm            "
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/width"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="69dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
-        android:background="@color/white"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/textView22"
-        app:layout_constraintEnd_toEndOf="@+id/textView22"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="@+id/textView22"
-        app:layout_constraintTop_toTopOf="@+id/textView22" />
-
-    <TextView
-        android:id="@+id/textView15"
+    <EditText
+        android:id="@+id/run"
         android:layout_width="0dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="7dp"
-        android:background="#00BCD4"
-        android:elegantTextHeight="true"
-        android:fontFamily="@font/questrial"
-        android:text="Rotation angle                                                deg  "
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="69dp"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/textView15"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toTopOf="@+id/textView15"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/numOfSteps"
+        app:layout_constraintEnd_toEndOf="@+id/numOfSteps"
+        app:layout_constraintStart_toStartOf="@+id/numOfSteps"
+        app:layout_constraintTop_toBottomOf="@+id/rise" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="64dp"
         android:background="#00BCD4"
         android:elegantTextHeight="true"
         android:fontFamily="@font/questrial"
         android:freezesText="false"
         android:inputType="number"
-        android:text="Total rise                                                             cm"
+        android:text="Total rise                                                             mm"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="69dp"
+    <EditText
+        android:id="@+id/rise"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintHorizontal_bias="0.806"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
-        app:layout_constraintVertical_bias="1.0" />
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/run"
+        app:layout_constraintEnd_toEndOf="@+id/run"
+        app:layout_constraintStart_toStartOf="@+id/run"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/calculate"
         android:layout_width="125dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="14dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:fontFamily="@font/questrial"
         android:text="Calculate"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/thickness" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="113dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.847"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        app:layout_constraintTop_toBottomOf="@+id/calculate">
+
+        <TextView
+            android:id="@+id/cubicFeet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/cubicYards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/cubicMeter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/totalRun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/totalRise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/stairSlope"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

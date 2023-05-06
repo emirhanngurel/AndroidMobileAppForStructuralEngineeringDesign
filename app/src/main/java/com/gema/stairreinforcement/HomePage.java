@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import com.gema.stairreinforcement.databinding.ActivityMainPageBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -48,6 +49,8 @@ public class HomePage extends AppCompatActivity {
         });
 
 
+
+
     }
 
     private void replaceFragment(Fragment fragment){
@@ -56,5 +59,18 @@ public class HomePage extends AppCompatActivity {
         fragmentTransaction.replace(R.id.constraintLayout2,fragment);
         fragmentTransaction.commit();
     }
+
+    public void calculate(View v){
+        /*
+        int num = Integer.parseInt(binding.numOfSteps.getText().toString());
+        double rise = Double.parseDouble(binding.rise.getText().toString());
+        double run = Double.parseDouble(binding.run.getText().toString());
+        double width = Double.parseDouble(binding.width.getText().toString());
+        */
+
+
+    }
+
+
 
 }

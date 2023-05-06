@@ -21,8 +21,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(MainActivity.this, SignOn.class));
+                finish();
             }
-        },2000
+
+            },1500
+
         );
 
 
