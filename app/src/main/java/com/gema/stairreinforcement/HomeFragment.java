@@ -68,6 +68,22 @@ public class HomeFragment extends Fragment {
             binding.cubicMeter.setText(Double.toString(meter));
             binding.cubicFeet.setText(Double.toString(feet));
             binding.cubicYards.setText(Double.toString(yard));
+
+            binding.totalRun.setVisibility(View.VISIBLE);
+            binding.totalRun2.setVisibility(View.VISIBLE);
+            binding.totalRise.setVisibility(View.VISIBLE);
+            binding.totalRise2.setVisibility(View.VISIBLE);
+            binding.stairSlope.setVisibility(View.VISIBLE);
+            binding.stairSlope2.setVisibility(View.VISIBLE);
+            binding.cubicMeter.setVisibility(View.VISIBLE);
+            binding.cubicMeter2.setVisibility(View.VISIBLE);
+            binding.cubicFeet.setVisibility(View.VISIBLE);
+            binding.cubicFeet2.setVisibility(View.VISIBLE);
+            binding.cubicYards.setVisibility(View.VISIBLE);
+            binding.cubicYards2.setVisibility(View.VISIBLE);
+            binding.calculate2.setVisibility(View.VISIBLE);
+
+
         });
 
 
