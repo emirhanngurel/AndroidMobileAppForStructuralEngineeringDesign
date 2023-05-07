@@ -233,43 +233,48 @@
         android:layout_height="154dp"
         android:layout_marginBottom="150dp"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculate">
+        app:layout_constraintTop_toBottomOf="@+id/calculate"
+        tools:visibility="gone">
 
         <TableLayout
+            android:id="@+id/table"
             android:layout_width="391dp"
             android:layout_height="192dp"
-            android:stretchColumns="*">
+            android:stretchColumns="*"
+            android:visibility="gone"
+            tools:visibility="gone">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:freezesText="true"
                     android:id="@+id/totalRun2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="Total Run "
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <TextView
-                    android:freezesText="true"
                     android:id="@+id/totalRun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="totalrun"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
             </TableRow>
 
@@ -278,28 +283,28 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:freezesText="true"
                     android:id="@+id/totalRise2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="Total Rise"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/totalRise"
-                    android:freezesText="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="totalrise"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
             </TableRow>
 
@@ -309,27 +314,27 @@
 
                 <TextView
                     android:id="@+id/stairSlope2"
-                    android:freezesText="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="Stair Slope"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/stairSlope"
-                    android:freezesText="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="stairslope"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
             </TableRow>
 
@@ -339,27 +344,27 @@
 
                 <TextView
                     android:id="@+id/cubicFeet2"
-                    android:freezesText="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="Cubic Feet"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <TextView
-                    android:freezesText="true"
                     android:id="@+id/cubicFeet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="cubicfeet"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
             </TableRow>
 
@@ -368,28 +373,28 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:freezesText="true"
                     android:id="@+id/cubicYards2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="Cubic Yards "
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <TextView
-                    android:freezesText="true"
                     android:id="@+id/cubicYards"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="cubicyards"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
             </TableRow>
 
@@ -398,28 +403,28 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:freezesText="true"
                     android:id="@+id/cubicMeter2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="Cubic Meter "
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <TextView
-                    android:freezesText="true"
                     android:id="@+id/cubicMeter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/questrial"
+                    android:freezesText="true"
                     android:text="cubicmeter"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
             </TableRow>
 
 

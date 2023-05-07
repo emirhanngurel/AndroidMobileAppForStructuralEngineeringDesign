@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,22 +117,22 @@ public class HomeFragment extends Fragment {
             binding.cubicFeet.setText(Double.toString(feet));
             binding.cubicYards.setText(Double.toString(yard));
 
-            binding.totalRun.setVisibility(View.VISIBLE);
-            binding.totalRun2.setVisibility(View.VISIBLE);
-            binding.totalRise.setVisibility(View.VISIBLE);
-            binding.totalRise2.setVisibility(View.VISIBLE);
-            binding.stairSlope.setVisibility(View.VISIBLE);
-            binding.stairSlope2.setVisibility(View.VISIBLE);
-            binding.cubicMeter.setVisibility(View.VISIBLE);
-            binding.cubicMeter2.setVisibility(View.VISIBLE);
-            binding.cubicFeet.setVisibility(View.VISIBLE);
-            binding.cubicFeet2.setVisibility(View.VISIBLE);
-            binding.cubicYards.setVisibility(View.VISIBLE);
-            binding.cubicYards2.setVisibility(View.VISIBLE);
-            binding.calculate2.setVisibility(View.VISIBLE);
-
-            binding.save.setVisibility(View.VISIBLE);
-
+            if(TextUtils.isEmpty(binding.numOfSteps.getText().toString())
+                    || TextUtils.isEmpty(binding.rise.getText().toString())
+                    || TextUtils.isEmpty(binding.run.getText().toString())
+                    || TextUtils.isEmpty(binding.width.getText().toString())
+                    || TextUtils.isEmpty(binding.thickness.getText().toString())
+            )
+            {
+            binding.linearLayout.setVisibility(View.INVISIBLE);
+            binding.table.setVisibility(View.INVISIBLE);
+            }
+            else {
+                binding.linearLayout.setVisibility(View.VISIBLE);
+                binding.table.setVisibility(View.VISIBLE);
+                binding.save.setVisibility(View.VISIBLE);
+                binding.calculate2.setVisibility(View.VISIBLE);
+            }
 
 
         });
