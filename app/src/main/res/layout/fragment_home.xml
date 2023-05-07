@@ -45,12 +45,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="393dp"
-        android:layout_height="103dp"
+        android:layout_width="413dp"
+        android:layout_height="93dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ekran_resmi_2023_04_24_17_28_25"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="-7dp" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView25"
@@ -63,8 +67,9 @@
         android:text="Throat thickness                                             mm"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView24"
-        tools:layout_editor_absoluteX="6dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <EditText
         android:id="@+id/thickness"
@@ -93,8 +98,9 @@
         android:text="Width of stairs                                                 mm             "
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
-        tools:layout_editor_absoluteX="6dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <EditText
         android:id="@+id/width"
@@ -122,9 +128,10 @@
         android:text="Number of steps                                               ps"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="6dp" />
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/numOfSteps"
@@ -152,8 +159,9 @@
         android:text="Run of the step                                                mm            "
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        tools:layout_editor_absoluteX="6dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <EditText
         android:id="@+id/run"
@@ -183,9 +191,10 @@
         android:text="Total rise                                                             mm"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="6dp" />
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/rise"

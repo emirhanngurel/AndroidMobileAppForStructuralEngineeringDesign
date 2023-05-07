@@ -1,9 +1,6 @@
 package com.gema.stairreinforcement;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
-
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.gema.stairreinforcement.databinding.FragmentHomeBinding;
 
@@ -41,8 +39,13 @@ public class HomeFragment extends Fragment {
         Button calculateButton = (Button) binding.calculate;
         calculateButton.setOnClickListener(v -> {
 
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            try{
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }catch (Exception e){
+                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
 
             int numOfSteps = Integer.parseInt(binding.numOfSteps.getText().toString());
             int rise = Integer.parseInt(binding.rise.getText().toString());
