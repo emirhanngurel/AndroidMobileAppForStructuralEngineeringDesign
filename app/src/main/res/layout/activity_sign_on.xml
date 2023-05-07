@@ -14,7 +14,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
+        android:fontFamily="@font/questrial"
         android:text="LOGIN"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -25,11 +25,12 @@
         android:id="@+id/reminding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Please login to continue."
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/email"
@@ -38,10 +39,12 @@
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
+        android:fontFamily="@font/questrial"
         android:hint="E-Mail"
         android:inputType="textEmailAddress"
         android:textColor="@color/white"
-        android:textColorHint="@color/black" />
+        android:textColorHint="@color/white"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/password"
@@ -50,9 +53,12 @@
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
+        android:fontFamily="@font/questrial"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColorHint="@color/black" />
+        android:textColor="#FFEB3B"
+        android:textColorHint="@color/white"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_login"
@@ -63,10 +69,12 @@
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
         android:backgroundTint="@color/design_default_color_secondary"
+        android:fontFamily="@font/questrial"
         android:onClick="login"
-        android:text="LOGIN"
+        android:text="Login"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@color/black"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:toggleCheckedStateOnClick="false" />
 
@@ -79,23 +87,26 @@
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
         android:backgroundTint="@color/design_default_color_secondary"
+        android:fontFamily="@font/questrial"
         android:onClick="signup"
-        android:text="SIGN UP"
+        android:text="Sign Up"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@color/black"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/please"
+        android:id="@+id/updateReminder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4pt"
         android:layout_marginTop="10pt"
         android:layout_marginRight="4pt"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/questrial"
         android:text="If you do not have an account, you can create a new account by tapping the SIGN UP button."
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

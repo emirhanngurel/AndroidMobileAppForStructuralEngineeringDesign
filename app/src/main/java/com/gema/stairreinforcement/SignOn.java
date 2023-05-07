@@ -1,13 +1,10 @@
 package com.gema.stairreinforcement;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PatternMatcher;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -47,13 +44,13 @@ public class SignOn extends AppCompatActivity {
                 @Override
                 public void onSuccess(AuthResult authResult) {
                     Toast.makeText(SignOn.this, "Login successful.", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SignOn.this,MainPage.class));
+                    startActivity(new Intent(SignOn.this, HomePage.class));
                     finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(SignOn.this,"Login Failed!" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignOn.this,"Login Failed! " + e.getMessage(),Toast.LENGTH_SHORT).show();
 
                 }
             });
