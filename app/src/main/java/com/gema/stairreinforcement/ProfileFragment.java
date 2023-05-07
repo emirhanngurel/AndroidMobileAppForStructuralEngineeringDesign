@@ -70,23 +70,39 @@ public class ProfileFragment extends Fragment {
         Button changePasswordButton = (Button) binding.changePasswordButton;
         changePasswordButton.setOnClickListener(v -> {
 
+
             EditText newPassword = (EditText) binding.editTextTextPassword;
             EditText newPassword2 = (EditText) binding.editTextTextPassword2;
+            String newPasswordStr = "";
+            String newPassword2Str = "";
 
-            String newPasswordStr = String.valueOf(newPassword.getText());
-            String newPassword2Str = String.valueOf(newPassword2.getText());
+            if(newPassword.getText().toString().isEmpty() || newPassword2.getText().toString().isEmpty()){
+                binding.editTextTextPassword.setError("Please provide a password");
+                binding.editTextTextPassword2.setError("Pleaase provie a password");
+            }
+            else{
+                newPasswordStr = String.valueOf(newPassword.getText());
+                newPassword2Str = String.valueOf(newPassword2.getText());
+
+            }
 
 
             if(newPasswordStr.equals(newPassword2Str)){
                 assert user != null;
-                user.updatePassword(newPasswordStr).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(getActivity(),"Password changed.",Toast.LENGTH_SHORT).show();
+                try{
+                    user.updatePassword(newPasswordStr).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(getActivity(),"Password changed.",Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+                }catch(IllegalArgumentException iae){
+                    binding.editTextTextPassword2.setError("Please provide a password");
+                    binding.editTextTextPassword2.setError("Please provide a password");
+                }
+
             }
             else{
                 Toast.makeText(getActivity(),"Passwords do not match.",Toast.LENGTH_SHORT).show();
