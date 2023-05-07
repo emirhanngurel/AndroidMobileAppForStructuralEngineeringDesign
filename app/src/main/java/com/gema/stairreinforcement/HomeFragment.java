@@ -1,5 +1,9 @@
 package com.gema.stairreinforcement;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import com.gema.stairreinforcement.databinding.FragmentHomeBinding;
@@ -35,6 +40,10 @@ public class HomeFragment extends Fragment {
 
         Button calculateButton = (Button) binding.calculate;
         calculateButton.setOnClickListener(v -> {
+
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
             int numOfSteps = Integer.parseInt(binding.numOfSteps.getText().toString());
             int rise = Integer.parseInt(binding.rise.getText().toString());
             int runOfStep = Integer.parseInt(binding.run.getText().toString());
@@ -82,6 +91,9 @@ public class HomeFragment extends Fragment {
             binding.cubicYards.setVisibility(View.VISIBLE);
             binding.cubicYards2.setVisibility(View.VISIBLE);
             binding.calculate2.setVisibility(View.VISIBLE);
+
+            binding.save.setVisibility(View.VISIBLE);
+
 
 
         });
