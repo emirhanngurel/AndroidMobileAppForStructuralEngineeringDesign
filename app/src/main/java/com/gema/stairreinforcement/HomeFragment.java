@@ -1,11 +1,16 @@
 package com.gema.stairreinforcement;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
+
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +19,35 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.gema.stairreinforcement.databinding.FragmentHomeBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    int numOfSteps;
+    int rise;
+    int runOfStep;
+    int widthOfStair;
+    int thickness;
 
+    int tru;
+    int tri;
+    double ss;
+    double meter;
+    double yard;
+    double feet;
+    String email;
 
 
 
@@ -49,12 +78,6 @@ public class HomeFragment extends Fragment {
             }
 
 
-            int numOfSteps;
-            int rise;
-            int runOfStep;
-            int widthOfStair;
-            int thickness;
-
 
             try{
                 numOfSteps = Integer.parseInt(binding.numOfSteps.getText().toString());
@@ -76,8 +99,6 @@ public class HomeFragment extends Fragment {
                 thickness = 0;
             }
 
-            int tru;
-            int tri;
             int amount;
 
             try{
@@ -91,10 +112,7 @@ public class HomeFragment extends Fragment {
             }
 
             double rad = Math.atan(amount);
-            double ss = rad * 180/Math.PI; // Stair slope
-            double meter;
-            double yard;
-            double feet;
+            ss = rad * 180/Math.PI; // Stair slope
             double total;
             double cal;
 
@@ -133,6 +151,49 @@ public class HomeFragment extends Fragment {
                 binding.save.setVisibility(View.VISIBLE);
                 binding.calculate2.setVisibility(View.VISIBLE);
             }
+
+
+        });
+
+        Button saveButton = (Button) binding.save;
+        saveButton.setOnClickListener(v -> {
+
+            if(user!=null){
+                for(UserInfo profile: user.getProviderData()){
+                    email = profile.getEmail();
+                }
+            }
+            Map<String, Object> cal = new HashMap<>();
+            cal.put("numOfSteps",numOfSteps);
+            cal.put("rise",rise);
+            cal.put("runOfStep",runOfStep);
+            cal.put("widthOfStair",widthOfStair);
+            cal.put("thickness",thickness);
+            cal.put("Total Run",tru);
+            cal.put("Total rise",tri);
+            cal.put("Stair slope",ss);
+            cal.put("Cubic Feet",feet);
+            cal.put("Cubic yards",yard);
+            cal.put("Cubic meter",meter);
+            cal.put("Email" , email);
+
+
+            db.collection("calculation").add(cal)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(getActivity(), "Calculations saved successfully with ID " + documentReference.getId(), Toast.LENGTH_SHORT).show();
+                            saveButton.setClickable(false);
+                            saveButton.setBackgroundColor(Color.parseColor("#808080"));
+                            saveButton.setTextColor(Color.parseColor("#FFFFFF"));
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getActivity(),"Error saving calculations to database " + e,Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
 
 
         });
