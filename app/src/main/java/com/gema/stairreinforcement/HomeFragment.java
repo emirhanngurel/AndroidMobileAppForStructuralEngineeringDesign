@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,6 +28,9 @@ import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,6 +52,7 @@ public class HomeFragment extends Fragment {
     double yard;
     double feet;
     String email;
+    String date;
 
 
 
@@ -163,19 +168,24 @@ public class HomeFragment extends Fragment {
                     email = profile.getEmail();
                 }
             }
+            Date today = Calendar.getInstance().getTime();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy EEE hh:mm");
+            date = sdf.format(today);
+
             Map<String, Object> cal = new HashMap<>();
             cal.put("numOfSteps",numOfSteps);
             cal.put("rise",rise);
             cal.put("runOfStep",runOfStep);
             cal.put("widthOfStair",widthOfStair);
             cal.put("thickness",thickness);
-            cal.put("Total Run",tru);
-            cal.put("Total rise",tri);
-            cal.put("Stair slope",ss);
-            cal.put("Cubic Feet",feet);
-            cal.put("Cubic yards",yard);
-            cal.put("Cubic meter",meter);
-            cal.put("Email" , email);
+            cal.put("tru",tru);
+            cal.put("tri",tri);
+            cal.put("ss",ss);
+            cal.put("feet",feet);
+            cal.put("yard",yard);
+            cal.put("meter",meter);
+            cal.put("email" , email);
+            cal.put("date", new Date());
 
 
             db.collection("calculation").add(cal)
@@ -186,6 +196,7 @@ public class HomeFragment extends Fragment {
                             saveButton.setClickable(false);
                             saveButton.setBackgroundColor(Color.parseColor("#808080"));
                             saveButton.setTextColor(Color.parseColor("#FFFFFF"));
+                            binding.newcalc.setVisibility(View.VISIBLE);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -196,6 +207,12 @@ public class HomeFragment extends Fragment {
 
 
 
+        });
+
+        Button newCalcButton = (Button) binding.newcalc;
+        newCalcButton.setOnClickListener(v -> {
+            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+            ft.detach(this).attach(this).commit();
         });
 
 
