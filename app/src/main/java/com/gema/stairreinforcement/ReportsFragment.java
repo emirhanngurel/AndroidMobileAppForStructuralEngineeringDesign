@@ -62,7 +62,7 @@ public class ReportsFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        CollectionReference ref = FirebaseFirestore.getInstance().collection("calculation");
+        CollectionReference ref = FirebaseFirestore.getInstance().collection("/calculation");
         Query query = ref.orderBy("date", Query.Direction.DESCENDING)
                 .whereEqualTo("email",email);
         FirestoreRecyclerOptions<Calculation> options = new FirestoreRecyclerOptions.Builder<Calculation>()

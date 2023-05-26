@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.text.TextUtils;
@@ -64,6 +65,7 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -211,8 +213,25 @@ public class HomeFragment extends Fragment {
 
         Button newCalcButton = (Button) binding.newcalc;
         newCalcButton.setOnClickListener(v -> {
-            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-            ft.detach(this).attach(this).commit();
+
+            binding.linearLayout.setVisibility(View.INVISIBLE);
+            binding.table.setVisibility(View.INVISIBLE);
+            binding.save.setVisibility(View.INVISIBLE);
+            binding.calculate2.setVisibility(View.INVISIBLE);
+            binding.newcalc.setVisibility(View.INVISIBLE);
+            binding.rise.getText().clear();
+            binding.run.getText().clear();
+            binding.numOfSteps.getText().clear();
+            binding.width.getText().clear();
+            binding.thickness.getText().clear();
+            saveButton.setClickable(true);
+            saveButton.setBackgroundColor(Color.parseColor("#03DAC6"));
+            saveButton.setTextColor(Color.parseColor("#000000"));
+
+
+
+
+
         });
 
 
