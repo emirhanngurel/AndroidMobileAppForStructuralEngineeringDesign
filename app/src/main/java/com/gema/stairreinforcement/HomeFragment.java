@@ -2,6 +2,7 @@ package com.gema.stairreinforcement;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -67,6 +68,7 @@ public class HomeFragment extends Fragment {
     }
 
 
+    @SuppressLint("DefaultLocale")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -137,10 +139,10 @@ public class HomeFragment extends Fragment {
             }
             binding.totalRise.setText(Integer.toString(tri));
             binding.totalRun.setText(Integer.toString(tru));
-            binding.stairSlope.setText(Double.toString(ss));
-            binding.cubicMeter.setText(Double.toString(meter));
-            binding.cubicFeet.setText(Double.toString(feet));
-            binding.cubicYards.setText(Double.toString(yard));
+            binding.stairSlope.setText(String.format("%.5f",ss));
+            binding.cubicMeter.setText(String.format("%.5f",meter));
+            binding.cubicFeet.setText(String.format("%.5f",feet));
+            binding.cubicYards.setText(String.format("%.5f",yard));
 
             if(TextUtils.isEmpty(binding.numOfSteps.getText().toString())
                     || TextUtils.isEmpty(binding.rise.getText().toString())
@@ -156,7 +158,6 @@ public class HomeFragment extends Fragment {
                 binding.linearLayout.setVisibility(View.VISIBLE);
                 binding.table.setVisibility(View.VISIBLE);
                 binding.save.setVisibility(View.VISIBLE);
-                binding.calculate2.setVisibility(View.VISIBLE);
             }
 
 
@@ -217,7 +218,6 @@ public class HomeFragment extends Fragment {
             binding.linearLayout.setVisibility(View.INVISIBLE);
             binding.table.setVisibility(View.INVISIBLE);
             binding.save.setVisibility(View.INVISIBLE);
-            binding.calculate2.setVisibility(View.INVISIBLE);
             binding.newcalc.setVisibility(View.INVISIBLE);
             binding.rise.getText().clear();
             binding.run.getText().clear();
