@@ -252,31 +252,31 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="228dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="240dp"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView25"
         app:layout_constraintVertical_bias="0.0"
-        tools:visibility="visible">
+        tools:visibility="invisible">
 
         <TableLayout
             android:id="@+id/table"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:stretchColumns="*"
-            android:visibility="visible"
-            tools:visibility="visible">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            tools:visibility="invisible">
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <TextView
@@ -306,7 +306,7 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <TextView
@@ -336,7 +336,7 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <TextView
@@ -366,7 +366,7 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <TextView
@@ -396,12 +396,12 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/cubicYards2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
@@ -426,8 +426,8 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/cubicMeter2"
@@ -455,17 +455,17 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/dollar2"
-                    android:layout_width="150dp"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
                     android:freezesText="true"
-                    android:text="Estimated Price ($)"
+                    android:text="Est. Cost ($)"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -485,17 +485,17 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/euro2"
-                    android:layout_width="150dp"
+                    android:layout_width="183dp"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
                     android:freezesText="true"
-                    android:text="Estimated Price (€)"
+                    android:text="Est. Cost (€)"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -515,17 +515,17 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/lira2"
-                    android:layout_width="150dp"
+                    android:layout_width="91dp"
                     android:layout_height="wrap_content"
                     android:background="#00BCD4"
                     android:fontFamily="@font/questrial"
                     android:freezesText="true"
-                    android:text="Estimated Price (₺)"
+                    android:text="Est. Cost (₺)"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold"

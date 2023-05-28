@@ -16,6 +16,33 @@ public class Calculation {
     private double yard;
     private double feet;
     private Date date;
+    private double lira;
+    private double dollar;
+    private double euro;
+
+    public double getLira() {
+        return lira;
+    }
+
+    public double getDollar() {
+        return dollar;
+    }
+
+    public double getEuro() {
+        return euro;
+    }
+
+    public void setLira(double lira) {
+        this.lira = lira;
+    }
+
+    public void setDollar(double dollar) {
+        this.dollar = dollar;
+    }
+
+    public void setEuro(double euro) {
+        this.euro = euro;
+    }
 
     public Date getDate() {
         return date;

@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gema.stairreinforcement.SignOn;
 import com.gema.stairreinforcement.databinding.FragmentProfileBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,7 +62,7 @@ public class ProfileFragment extends Fragment {
         signOutButton.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
             Toast.makeText(getActivity(),"Logged out successfully.",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getActivity(),SignOn.class));
+            startActivity(new Intent(getActivity(), SignOn.class));
             getActivity().finish();
         });
 

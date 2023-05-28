@@ -38,9 +38,9 @@ public class CalculationAdapter extends FirestoreRecyclerAdapter<Calculation,Cal
         holder.feet.setText("Cubic Feets: " + model.getFeet() + " ft³");
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy EEE hh:mm");
         holder.date.setText(sdf.format(model.getDate()));
-
-
-
+        holder.lira.setText("Estimated Cost (TRY): " + model.getLira());
+        holder.dollar.setText("Estimated Cost (USD): " + model.getDollar());
+        holder.euro.setText("Estimated Cost (EUR): " + model.getEuro());
 
     }
 
@@ -55,7 +55,8 @@ public class CalculationAdapter extends FirestoreRecyclerAdapter<Calculation,Cal
     }
 
     class calViewHolder extends RecyclerView.ViewHolder{
-        TextView numOfSteps, rise, runOfStep, widthOfStair, thickness, tru, tri, ss, meter, yard, feet, date;
+        TextView numOfSteps, rise, runOfStep, widthOfStair, thickness, tru, tri, ss, meter, yard, feet, date,
+        lira, dollar, euro;
 
 
         public calViewHolder(@NonNull View itemView) {
@@ -72,6 +73,9 @@ public class CalculationAdapter extends FirestoreRecyclerAdapter<Calculation,Cal
             yard = itemView.findViewById(R.id.idCubicYards);
             feet = itemView.findViewById(R.id.idCubicFeet);
             date = itemView.findViewById(R.id.idDate);
+            lira = itemView.findViewById(R.id.idTurkishLira);
+            dollar = itemView.findViewById(R.id.idUSDollar);
+            euro = itemView.findViewById(R.id.idEuro);
 
         }
     }

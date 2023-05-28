@@ -4,13 +4,10 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,6 +18,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.gema.stairreinforcement.databinding.FragmentHomeBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,8 +32,13 @@ import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.json.JSONObject;
+
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Currency;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,8 +62,9 @@ public class HomeFragment extends Fragment {
     double feet;
     String email;
     String date;
-
-
+    double lira;
+    double dollar;
+    double euro;
 
     public HomeFragment() {
     }
@@ -68,12 +76,16 @@ public class HomeFragment extends Fragment {
     }
 
 
+
     @SuppressLint("DefaultLocale")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         binding = FragmentHomeBinding.inflate(inflater,container,false);
         View view = binding.getRoot();
+
 
 
         Button calculateButton = (Button) binding.calculate;
@@ -137,12 +149,21 @@ public class HomeFragment extends Fragment {
                 yard = total * 0.00000000130795061931439; //yd3
                 meter = total * 0.000000001; //m3
             }
+
+            lira = meter * 1650;
+
+
+            NumberFormat format = NumberFormat.getCurrencyInstance();
+            format.setMaximumFractionDigits(2);
+            format.setCurrency(Currency.getInstance("TRY"));
             binding.totalRise.setText(Integer.toString(tri));
             binding.totalRun.setText(Integer.toString(tru));
             binding.stairSlope.setText(String.format("%.5f",ss));
             binding.cubicMeter.setText(String.format("%.5f",meter));
             binding.cubicFeet.setText(String.format("%.5f",feet));
             binding.cubicYards.setText(String.format("%.5f",yard));
+            binding.lira.setText(format.format(lira));
+            vget();
 
             if(TextUtils.isEmpty(binding.numOfSteps.getText().toString())
                     || TextUtils.isEmpty(binding.rise.getText().toString())
@@ -189,6 +210,9 @@ public class HomeFragment extends Fragment {
             cal.put("meter",meter);
             cal.put("email" , email);
             cal.put("date", new Date());
+            cal.put("lira",lira);
+            cal.put("dollar",dollar);
+            cal.put("euro",euro);
 
 
             db.collection("calculation").add(cal)
@@ -207,9 +231,6 @@ public class HomeFragment extends Fragment {
                             Toast.makeText(getActivity(),"Error saving calculations to database " + e,Toast.LENGTH_SHORT).show();
                         }
                     });
-
-
-
         });
 
         Button newCalcButton = (Button) binding.newcalc;
@@ -228,18 +249,48 @@ public class HomeFragment extends Fragment {
             saveButton.setBackgroundColor(Color.parseColor("#03DAC6"));
             saveButton.setTextColor(Color.parseColor("#000000"));
 
-
-
-
-
         });
-
-
-
-
 
 
         return view;
 
     }
+
+    public void vget(){
+        String base_url = "https://api.freecurrencyapi.com/v1/";
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET,
+                base_url + "latest?apikey=WQsqWxdknaNbCgi1lTedw4Uo3YszfQBUOh7PmtJ6&currencies=TRY%2CEUR",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("snow", response.toString());
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+
+
+                            dollar = lira / jsonObject1.getDouble("TRY");
+                            euro = dollar * jsonObject1.getDouble("EUR");
+
+
+                            NumberFormat format = NumberFormat.getCurrencyInstance();
+                            format.setMaximumFractionDigits(2);
+
+                            format.setCurrency(Currency.getInstance("USD"));
+                            binding.dollar.setText(format.format(dollar));
+
+                            format.setCurrency(Currency.getInstance("EUR"));
+                            binding.euro.setText(format.format(euro));
+
+                        } catch (Exception e) {
+                            Log.d("currencyerror", e.getMessage().toString());
+                        }
+                    }
+                },
+                error -> Log.d("snow","onErrorResponse: " + error.getMessage().toString()));
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        queue.add(stringRequest);
+    }
+
 }

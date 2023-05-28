@@ -120,6 +120,33 @@
             android:textColor="@color/black"
             android:textStyle="bold" />
 
+        <TextView
+        android:id="@+id/idTurkishLira"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="Estimated Cost (TRY)"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/idUSDollar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="Estimated Cost (USD)"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/idEuro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:text="Estimated Cost (EUR)"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
 
     </LinearLayout>
 
