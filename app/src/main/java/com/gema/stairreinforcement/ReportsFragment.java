@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.gema.stairreinforcement.databinding.FragmentReportsBinding;
@@ -16,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -58,7 +61,14 @@ public class ReportsFragment extends Fragment {
                 .build();
         adapter = new CalculationAdapter(options);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new CalculationAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                String id = documentSnapshot.getId();
 
+                Toast.makeText(getActivity(),"Pos: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return view;
     }
@@ -74,4 +84,5 @@ public class ReportsFragment extends Fragment {
         super.onStop();
         adapter.stopListening();
     }
+
 }
