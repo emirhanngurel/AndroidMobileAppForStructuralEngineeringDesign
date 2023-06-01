@@ -22,10 +22,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SignOn.class));
                 finish();
             }
-
             },1500
 
+
         );
+
+
 
 
     }

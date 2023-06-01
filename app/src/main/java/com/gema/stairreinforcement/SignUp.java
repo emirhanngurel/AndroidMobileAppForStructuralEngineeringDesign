@@ -1,6 +1,7 @@
 package com.gema.stairreinforcement;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -30,7 +31,6 @@ public class SignUp extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.signupemail);
         password = findViewById(R.id.signuppwd);
-
 
     }
 
@@ -62,5 +62,10 @@ public class SignUp extends AppCompatActivity {
         }
 
     }
+    public void back(View v){
+        startActivity(new Intent(SignUp.this,SignOn.class));
+        finish();
+    }
+
 
 }
