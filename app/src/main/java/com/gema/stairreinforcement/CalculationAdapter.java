@@ -1,20 +1,36 @@
 package com.gema.stairreinforcement;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Environment;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+
 
 public class CalculationAdapter extends FirestoreRecyclerAdapter<Calculation,CalculationAdapter.calViewHolder> {
 
@@ -84,7 +100,11 @@ public class CalculationAdapter extends FirestoreRecyclerAdapter<Calculation,Cal
                 public void onClick(View v) {
                     int position = getAbsoluteAdapterPosition();
                     if (position != RecyclerView.NO_POSITION && listener!= null){
-                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                        try {
+                            listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
 
                 }
@@ -94,10 +114,36 @@ public class CalculationAdapter extends FirestoreRecyclerAdapter<Calculation,Cal
     }
 
     public interface OnItemClickListener{
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+        void onItemClick(DocumentSnapshot documentSnapshot, int position) throws FileNotFoundException;
     }
+
 
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
     }
+
+    public static class WrapContentLinearLayoutManager extends LinearLayoutManager {
+        public WrapContentLinearLayoutManager(Context context) {
+            super(context);
+        }
+
+        public WrapContentLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {
+            super(context, orientation, reverseLayout);
+        }
+
+        public WrapContentLinearLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+            super(context, attrs, defStyleAttr, defStyleRes);
+        }
+
+        @Override
+        public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+            try {
+                super.onLayoutChildren(recycler, state);
+            } catch (IndexOutOfBoundsException e) {
+                Log.e("TAG", "meet a IOOBE in RecyclerView");
+            }
+        }
+    }
+
+
 }

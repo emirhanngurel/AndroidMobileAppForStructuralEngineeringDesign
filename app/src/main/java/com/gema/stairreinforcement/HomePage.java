@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 
 import com.gema.stairreinforcement.databinding.ActivityMainPageBinding;
@@ -13,6 +15,7 @@ import com.gema.stairreinforcement.databinding.FragmentHomeBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.lang.reflect.Method;
 import java.util.Calendar;
 
 public class HomePage extends AppCompatActivity {
@@ -27,6 +30,16 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(Build.VERSION.SDK_INT>=24){
+            try{
+                Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+                m.invoke(null);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+
 
         binding = ActivityMainPageBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
