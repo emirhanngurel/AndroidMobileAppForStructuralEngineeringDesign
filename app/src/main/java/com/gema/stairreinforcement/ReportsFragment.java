@@ -1,6 +1,8 @@
 package com.gema.stairreinforcement;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -102,8 +104,6 @@ public class ReportsFragment extends Fragment {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) throws FileNotFoundException {
                 generatePDF(documentSnapshot);
-
-
             }
         });
 
@@ -111,6 +111,13 @@ public class ReportsFragment extends Fragment {
     }
 
     public void generatePDF(DocumentSnapshot documentSnapshot) throws FileNotFoundException {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle("PDF Report Generated");
+        builder.setMessage("Please choose how you want to receive the report");
+
+
         Date date = documentSnapshot.getDate("date");
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy-HH-mm", Locale.US);
         String pdfPath = getActivity().getFilesDir().getAbsolutePath();
@@ -228,31 +235,42 @@ public class ReportsFragment extends Fragment {
         document.add(warn);
         document.close();
 
-        SendEmailService.getInstance(getContext().getApplicationContext()).emailExecutor.execute(new Runnable() {
+        Toast.makeText(getActivity(),"PDF Created",Toast.LENGTH_SHORT).show();
+
+        builder.setPositiveButton("Download PDF", new DialogInterface.OnClickListener() {
             @Override
-            public void run() {
-                SendEmailService.getInstance(getContext().getApplicationContext()).SendEmail(email,date,mailPath);
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (file.exists()) //Checking if the file exists or not
+                {
+                    Uri path = FileProvider.getUriForFile(getContext(),getActivity().getPackageName() + ".provider",file);
+                    Intent objIntent = new Intent(Intent.ACTION_VIEW);
+                    objIntent.setDataAndType(path, "application/pdf");
+                    objIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    //objIntent.setFlags(Intent. FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(objIntent);//Starting the pdf viewer
+                } else {
+
+                    Toast.makeText(getActivity(), "The file not exists! ", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
-        Toast.makeText(getActivity(),"PDF Created",Toast.LENGTH_SHORT).show();
+        builder.setNegativeButton("E-Mail PDF", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                SendEmailService.getInstance(getContext().getApplicationContext()).emailExecutor.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        SendEmailService.getInstance(getContext().getApplicationContext()).SendEmail(email,date,mailPath);
+                    }
+                });
+            }
+        });
 
-        if (file.exists()) //Checking if the file exists or not
-        {
-            Uri path = FileProvider.getUriForFile(getContext(),getActivity().getPackageName() + ".provider",file);
-            Intent objIntent = new Intent(Intent.ACTION_VIEW);
-            objIntent.setDataAndType(path, "application/pdf");
-            objIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            //objIntent.setFlags(Intent. FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(objIntent);//Starting the pdf viewer
-        } else {
-
-            Toast.makeText(getActivity(), "The file not exists! ", Toast.LENGTH_SHORT).show();
-
-        }
+        builder.show();
 
     }
-
 
     @Override
     public void onStart() {

@@ -73,7 +73,7 @@ public class SendEmailService {
 
 
             BodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText("The report you requested to download on " +date+ " is attached to the e-mail.");
+            messageBodyPart.setText("The report on the calculation results you recorded on  " +date+ " is attached to the e-mail.");
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(messageBodyPart);
 
