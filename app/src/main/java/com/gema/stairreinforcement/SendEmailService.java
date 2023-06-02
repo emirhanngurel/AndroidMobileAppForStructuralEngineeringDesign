@@ -1,6 +1,7 @@
 package com.gema.stairreinforcement;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -73,7 +74,7 @@ public class SendEmailService {
 
 
             BodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText("The report on the calculation results you recorded on  " +date+ " is attached to the e-mail.");
+            messageBodyPart.setText("The report on the calculation results you recorded on " +date+ " is attached to the e-mail.");
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(messageBodyPart);
 
@@ -87,6 +88,7 @@ public class SendEmailService {
             message.setContent(multipart);
 
             Transport.send(message);
+
         }
         catch (MessagingException e){
             e.printStackTrace();

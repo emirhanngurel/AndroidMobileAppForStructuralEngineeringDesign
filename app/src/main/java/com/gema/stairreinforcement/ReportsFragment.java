@@ -237,7 +237,7 @@ public class ReportsFragment extends Fragment {
 
         Toast.makeText(getActivity(),"PDF Created",Toast.LENGTH_SHORT).show();
 
-        builder.setPositiveButton("Download PDF", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("View PDF", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (file.exists()) //Checking if the file exists or not
@@ -265,6 +265,7 @@ public class ReportsFragment extends Fragment {
                         SendEmailService.getInstance(getContext().getApplicationContext()).SendEmail(email,date,mailPath);
                     }
                 });
+                Toast.makeText(getActivity(),"The report has been sent to you by e-mail, please check your inbox.",Toast.LENGTH_LONG).show();
             }
         });
 
