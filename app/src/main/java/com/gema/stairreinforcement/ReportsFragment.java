@@ -53,6 +53,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class ReportsFragment extends Fragment {
 
@@ -61,6 +62,7 @@ public class ReportsFragment extends Fragment {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String email;
 
+    SendEmailService mail = new SendEmailService(getContext());
 
     private RecyclerView recyclerView;
 
@@ -113,6 +115,7 @@ public class ReportsFragment extends Fragment {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy-HH-mm", Locale.US);
         String pdfPath = getActivity().getFilesDir().getAbsolutePath();
         File file = new File(pdfPath, "Report-" + formatter.format(date) + ".pdf");
+        String mailPath = pdfPath + "/Report-" + formatter.format(date) + ".pdf";
         OutputStream outputStream = new FileOutputStream(file);
 
         PdfWriter writer = new PdfWriter(file);
@@ -225,6 +228,12 @@ public class ReportsFragment extends Fragment {
         document.add(warn);
         document.close();
 
+        SendEmailService.getInstance(getContext().getApplicationContext()).emailExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                SendEmailService.getInstance(getContext().getApplicationContext()).SendEmail(email,date,mailPath);
+            }
+        });
 
         Toast.makeText(getActivity(),"PDF Created",Toast.LENGTH_SHORT).show();
 
