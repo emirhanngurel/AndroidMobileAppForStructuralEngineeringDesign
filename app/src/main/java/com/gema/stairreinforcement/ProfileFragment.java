@@ -96,6 +96,8 @@ public class ProfileFragment extends Fragment {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(getActivity(),"Password changed.",Toast.LENGTH_SHORT).show();
+                                binding.editTextTextPassword.setText("");
+                                binding.editTextTextPassword2.setText("");
                             }
                         }
                     });
