@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -19,6 +21,8 @@ public class SignOn extends AppCompatActivity {
     private EditText email, password;
     private FirebaseAuth mAuth;
 
+    private TextView forgot;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +30,8 @@ public class SignOn extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
-
+        forgot = findViewById(R.id.forgotPassword);
+        forgot.setPaintFlags(forgot.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
     public void login(View v){
@@ -58,6 +63,11 @@ public class SignOn extends AppCompatActivity {
     }
     public void signup(View v){
         startActivity(new Intent(SignOn.this,SignUp.class));
+        finish();
+    }
+
+    public void forgotPassword(View v){
+        startActivity(new Intent(SignOn.this, ForgotPassword.class));
         finish();
     }
 }

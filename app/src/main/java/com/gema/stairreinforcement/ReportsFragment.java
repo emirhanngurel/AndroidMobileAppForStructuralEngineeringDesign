@@ -1,6 +1,8 @@
 package com.gema.stairreinforcement;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -53,6 +55,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class ReportsFragment extends Fragment {
 
@@ -61,6 +64,7 @@ public class ReportsFragment extends Fragment {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String email;
 
+    SendEmailService mail = new SendEmailService(getContext());
 
     private RecyclerView recyclerView;
 
@@ -100,8 +104,6 @@ public class ReportsFragment extends Fragment {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) throws FileNotFoundException {
                 generatePDF(documentSnapshot);
-
-
             }
         });
 
@@ -109,10 +111,18 @@ public class ReportsFragment extends Fragment {
     }
 
     public void generatePDF(DocumentSnapshot documentSnapshot) throws FileNotFoundException {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle("PDF Report Generated");
+        builder.setMessage("Please choose how you want to receive the report");
+
+
         Date date = documentSnapshot.getDate("date");
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy-HH-mm", Locale.US);
         String pdfPath = getActivity().getFilesDir().getAbsolutePath();
         File file = new File(pdfPath, "Report-" + formatter.format(date) + ".pdf");
+        String mailPath = pdfPath + "/Report-" + formatter.format(date) + ".pdf";
         OutputStream outputStream = new FileOutputStream(file);
 
         PdfWriter writer = new PdfWriter(file);
@@ -184,14 +194,21 @@ public class ReportsFragment extends Fragment {
         table2.addCell(new Cell().add(new Paragraph("Stair Slope")));
         table2.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("ss")))));
 
-        table2.addCell(new Cell().add(new Paragraph("Cubic Feet")));
-        table2.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("feet")))));
+        Table tableAmount = new Table(width);
+        tableAmount.setHorizontalAlignment(HorizontalAlignment.CENTER);
 
-        table2.addCell(new Cell().add(new Paragraph("Cubic Yards")));
-        table2.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("yard")))));
+        Paragraph amount = new Paragraph("Estimated amount according to calculations")
+                .setBold()
+                .setTextAlignment(TextAlignment.CENTER).setFontSize(20);
 
-        table2.addCell(new Cell().add(new Paragraph("Cubic Meter")));
-        table2.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("meter")))));
+        tableAmount.addCell(new Cell().add(new Paragraph("Cubic Feet")));
+        tableAmount.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("feet")))));
+
+        tableAmount.addCell(new Cell().add(new Paragraph("Cubic Yards")));
+        tableAmount.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("yard")))));
+
+        tableAmount.addCell(new Cell().add(new Paragraph("Cubic Meter")));
+        tableAmount.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("meter")))));
 
         Paragraph cost = new Paragraph("Estimated costs according to exchange rates")
                 .setBold()
@@ -220,30 +237,50 @@ public class ReportsFragment extends Fragment {
         document.add(table);
         document.add(outputs);
         document.add(table2);
+        document.add(amount);
+        document.add(tableAmount);
         document.add(cost);
         document.add(table3);
         document.add(warn);
         document.close();
 
-
         Toast.makeText(getActivity(),"PDF Created",Toast.LENGTH_SHORT).show();
 
-        if (file.exists()) //Checking if the file exists or not
-        {
-            Uri path = FileProvider.getUriForFile(getContext(),getActivity().getPackageName() + ".provider",file);
-            Intent objIntent = new Intent(Intent.ACTION_VIEW);
-            objIntent.setDataAndType(path, "application/pdf");
-            objIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            //objIntent.setFlags(Intent. FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(objIntent);//Starting the pdf viewer
-        } else {
+        builder.setPositiveButton("View PDF", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (file.exists()) //Checking if the file exists or not
+                {
+                    Uri path = FileProvider.getUriForFile(getContext(),getActivity().getPackageName() + ".provider",file);
+                    Intent objIntent = new Intent(Intent.ACTION_VIEW);
+                    objIntent.setDataAndType(path, "application/pdf");
+                    objIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    //objIntent.setFlags(Intent. FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(objIntent);//Starting the pdf viewer
+                } else {
 
-            Toast.makeText(getActivity(), "The file not exists! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "The file not exists! ", Toast.LENGTH_SHORT).show();
 
-        }
+                }
+            }
+        });
+
+        builder.setNegativeButton("E-Mail PDF", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                SendEmailService.getInstance(getContext().getApplicationContext()).emailExecutor.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        SendEmailService.getInstance(getContext().getApplicationContext()).SendEmail(email,date,mailPath);
+                    }
+                });
+                Toast.makeText(getActivity(),"The report has been sent to you by e-mail, please check your inbox.",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        builder.show();
 
     }
-
 
     @Override
     public void onStart() {
