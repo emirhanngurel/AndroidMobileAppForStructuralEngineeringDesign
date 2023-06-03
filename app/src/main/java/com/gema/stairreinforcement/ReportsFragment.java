@@ -194,14 +194,21 @@ public class ReportsFragment extends Fragment {
         table2.addCell(new Cell().add(new Paragraph("Stair Slope")));
         table2.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("ss")))));
 
-        table2.addCell(new Cell().add(new Paragraph("Cubic Feet")));
-        table2.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("feet")))));
+        Table tableAmount = new Table(width);
+        tableAmount.setHorizontalAlignment(HorizontalAlignment.CENTER);
 
-        table2.addCell(new Cell().add(new Paragraph("Cubic Yards")));
-        table2.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("yard")))));
+        Paragraph amount = new Paragraph("Estimated amount according to calculations")
+                .setBold()
+                .setTextAlignment(TextAlignment.CENTER).setFontSize(20);
 
-        table2.addCell(new Cell().add(new Paragraph("Cubic Meter")));
-        table2.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("meter")))));
+        tableAmount.addCell(new Cell().add(new Paragraph("Cubic Feet")));
+        tableAmount.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("feet")))));
+
+        tableAmount.addCell(new Cell().add(new Paragraph("Cubic Yards")));
+        tableAmount.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("yard")))));
+
+        tableAmount.addCell(new Cell().add(new Paragraph("Cubic Meter")));
+        tableAmount.addCell(new Cell().add(new Paragraph(String.valueOf(documentSnapshot.getDouble("meter")))));
 
         Paragraph cost = new Paragraph("Estimated costs according to exchange rates")
                 .setBold()
@@ -230,6 +237,8 @@ public class ReportsFragment extends Fragment {
         document.add(table);
         document.add(outputs);
         document.add(table2);
+        document.add(amount);
+        document.add(tableAmount);
         document.add(cost);
         document.add(table3);
         document.add(warn);
